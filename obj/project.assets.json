@@ -11897,11 +11897,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/jorge/Documentos/Projetos/Estudo/SignalR/backend-signalr/backend-signalr.csproj",
+      "projectUniqueName": "/home/jorge/Documentos/Projetos/Estudo/SignalR/signarl-server/backend-signalr.csproj",
       "projectName": "backend-signalr",
-      "projectPath": "/home/jorge/Documentos/Projetos/Estudo/SignalR/backend-signalr/backend-signalr.csproj",
+      "projectPath": "/home/jorge/Documentos/Projetos/Estudo/SignalR/signarl-server/backend-signalr.csproj",
       "packagesPath": "/home/jorge/.nuget/packages/",
-      "outputPath": "/home/jorge/Documentos/Projetos/Estudo/SignalR/backend-signalr/obj/",
+      "outputPath": "/home/jorge/Documentos/Projetos/Estudo/SignalR/signarl-server/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/share/dotnet/sdk/NuGetFallbackFolder"

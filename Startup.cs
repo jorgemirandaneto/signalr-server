@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -25,13 +27,15 @@ namespace backend_signalr
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);           
 
-            services.AddCors(options =>
+            services.AddCors(options => options.AddPolicy("CorsPolicy", builder =>
             {
-                options.AddPolicy("AllowSpecificOrigin",
-                builder => builder.WithOrigins("*"));
-            });
+            builder
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .WithOrigins("https://localhost:4200");
+            }));
             services.AddSignalR();
         }
 
@@ -41,13 +45,13 @@ namespace backend_signalr
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-            }        
+            }
 
-           app.UseCors(builder => builder
-          .AllowAnyOrigin()
-          .AllowAnyMethod()
-          .AllowAnyHeader()
-          .AllowCredentials());        
+            app.UseCors(builder => builder
+           .AllowAnyOrigin()
+           .AllowAnyMethod()
+           .AllowAnyHeader()
+           .AllowCredentials());
 
 
             app.UseSignalR(routes =>
